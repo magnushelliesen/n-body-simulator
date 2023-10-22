@@ -1,2 +1,2 @@
 # n-body-simulator
-Notebook with body and system class that simulates planetary movement in 2d (may be extended to 3d, who knows..)
+Notebook with (celestial) body and (solar) system class that simulates planetary movement in 2d (may be extended to 3d, who knows..).
