@@ -59,7 +59,7 @@ ax.set_zlim3d([-20, 20])
 ax.set_zlabel('z')
 
 # Creating the Animation object
-line_ani = animation.FuncAnimation(fig, update_lines, System.N, fargs=(data, lines),
+line_ani = animation.FuncAnimation(fig, update_lines, int(System.N/50), fargs=(data, lines),
                                    interval=1, blit=False)
 
 plt.show()
@@ -73,3 +73,4 @@ writer = Writer(fps=10, metadata=dict(artist='Magnus Kvåle Helliesen'), bitrate
 
 # Save the animation as an MP4
 line_ani.save(output_file, writer=writer)
+
