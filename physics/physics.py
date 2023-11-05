@@ -20,6 +20,7 @@ class Body():
     - position_t (tuple): Current position.
     - velocity_t (tuple): Current velocity.
     """
+
     def __init__(self,
                  position_0: tuple,
                  velocity_0: tuple,
