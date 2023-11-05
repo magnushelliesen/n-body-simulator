@@ -4,10 +4,35 @@ from math import sqrt
 
 # Let's make a class holding properties of a celestial body
 class Body():
+    """
+    Class representing a celestial body.
+
+    Parameters:
+    - position_0 (tuple): Initial position of the body in the form (x, y, z).
+    - velocity_0 (tuple): Initial velocity of the body in the form (vx, vy, vz).
+    - mass (float): Mass of the body.
+
+    Attributes:
+    - position_0 (tuple): Initial position.
+    - velocity_0 (tuple): Initial velocity.
+    - mass (float): Mass of the body.
+    - dim (int): Dimension of the space in which the body is embedded.
+    - position_t (tuple): Current position.
+    - velocity_t (tuple): Current velocity.
+    """
     def __init__(self,
                  position_0: tuple,
                  velocity_0: tuple,
                  mass: float):
+        """
+        Initialize a celestial body.
+
+        Parameters:
+        - position_0 (tuple): Initial position.
+        - velocity_0 (tuple): Initial velocity.
+        - mass (float): Mass of the body.
+        """
+
         # Cheking for type errors
         if isinstance(position_0, tuple) is False:
             raise TypeError('position_0 must be tuple')
@@ -84,12 +109,38 @@ class Body():
 
 # Let's make a class that holds a bunch of celestial bodies
 class System():
+    """
+    Class representing a system of celestial bodies.
+
+    Class attributes:
+    - G (float): Gravitational constant.
+    - dim (int): Dimension of the system.
+    - N (int): Number of time steps in simulation.
+    - delta_t (float): Time step size.
+
+    Parameters:
+    - bodies (Body): A variable number of Body objects representing the celestial bodies in the system.
+
+    Attributes:
+    - G (float): Gravitational constant.
+    - bodies (dict): Dictionary of Body objects in the system.
+    - t (numpy.ndarray): Time array for simulation results.
+    - r (dict): Dictionary of position arrays for each body in the system.
+    """
+
     G = None
     dim = None
     N = None
     delta_t = None
 
     def __init__(self, *bodies: Body):
+        """
+        Initialize a system of celestial bodies.
+
+        Parameters:
+        - bodies (Body): A variable number of Body objects representing the celestial bodies in the system.
+        """
+
         # Cheking for type errors
         if all(isinstance(x, Body) for x in bodies) is False:
             raise TypeError('all bodies must be Body object')
@@ -130,6 +181,21 @@ class System():
 
     # Method that simulates object trajectories
     def simulate(self):
+        """
+        Simulate the trajectories of celestial bodies in the system.
+
+        This method performs a simulation of the celestial bodies' trajectories over a specified number of time steps and stores the simulation results.
+
+        Raises:
+        - TypeError: If G is not a float or int, N is not an int, or delta_t is not a float.
+
+        Results:
+        - The simulation results are stored in the `t` (time) and `r` (position) attributes of the System object.
+
+        Returns:
+        None
+        """
+
         # Checking for type errors
         if isinstance(System.G, (float, int)) is False:
             raise TypeError('G must be float or int')
