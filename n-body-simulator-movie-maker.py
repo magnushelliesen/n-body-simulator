@@ -74,3 +74,8 @@ writer = Writer(fps=10, metadata=dict(artist='Magnus Kvåle Helliesen'), bitrate
 # Save the animation as an MP4
 line_ani.save(output_file, writer=writer)
 
+# Specify the output filename for the GIF
+gif_output_file = "n-body-simulator-the-movie.gif"
+
+# Save the animation as a GIF
+line_ani.save(gif_output_file, writer='pillow', fps=10)
