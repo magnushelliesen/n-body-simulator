@@ -1,6 +1,8 @@
 """
 The animation code is stolen/borrowed from https://matplotlib.org/2.1.2/gallery/animation/simple_3danim.html
-and made to work with this particular setup
+and made to work with this particular setup.
+The code is not pretty, I admit it, but it works ATM.
+I might rewrite it later...
 """
 
 import numpy as np
@@ -39,9 +41,12 @@ def update_lines(num, dataLines, lines):
 fig = plt.figure(figsize=(10, 10))
 ax = p3.Axes3D(fig)
 
-data = [val[::100, :].T for _, val in system.r.items()]
+data = [val[::50, :].T for _, val in system.r.items()]
+mass = [val.mass for key, val in system.bodies.items()]
 
-lines = [ax.plot(dat[0, 0:1], dat[1, 0:1], dat[2, 0:1], '--', markevery=[-1], marker='o')[0] for dat in data]
+lines = [ax.plot(dat[0, 0:1], dat[1, 0:1], dat[2, 0:1],
+                 f'{col}--', markevery=[-1], marker='o', ms=5*(mas)**(2/3))[0]
+         for dat, mas, col in zip(data, mass, ['r', 'b', 'g', 'k', 'm', 'c', 'y'])]
 
 # Setting the axes properties
 ax.set_xlim3d([-20, 20])
@@ -60,7 +65,7 @@ line_ani = animation.FuncAnimation(fig, update_lines, System.N, fargs=(data, lin
 plt.show()
 
 # Specify the output filename for the MP4 video
-output_file = "animation.mp4"
+output_file = "n-body-simulator-the-movie.mov"
 
 # Define the writer to save the animation as an MP4
 Writer = animation.writers['ffmpeg']
