@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
-from physics.physics import Body, System
+from physics import Body, System
 
 # We set up how we want the System class to behave
 System.dim = 3
