@@ -4,10 +4,10 @@ By: Magnus Kvåle Helliesen
 
 import numpy as np
 from math import sqrt
-
+from typing import Tuple
 
 # Let's make a class holding properties of a celestial body
-class Body():
+class Body:
     """
     Class representing a celestial body.
 
@@ -26,8 +26,8 @@ class Body():
     """
 
     def __init__(self,
-                 position_0: tuple,
-                 velocity_0: tuple,
+                 position_0: Tuple[float, ...],
+                 velocity_0: Tuple[float, ...],
                  mass: float):
         """
         Initialize a celestial body.
@@ -113,7 +113,7 @@ class Body():
 
 
 # Let's make a class that holds a bunch of celestial bodies
-class System():
+class System:
     """
     Class representing a system of celestial bodies.
 
